@@ -61,10 +61,12 @@ void search(char start, char end)
 		}
 
 		
+		/*将数据逆向返回*/
 		if(flag == end_flag)
 		{
 			printf("%d\n", grap[start_flag].length[end_flag]);
 			int min = MAX;
+			/*返回前一个父节点*/
 			while(n>0)
 			{
 				path[m++] = grap[flag].name;
@@ -78,7 +80,9 @@ void search(char start, char end)
 				}
 				flag = j;
 				use[i] = 0;
-				if(grap[flag].name == grap[start_flag].name){
+				/*返回起始点*/
+				if(grap[flag].name == grap[start_flag].name)
+				{
 					path[m++] = grap[flag].name;
 					break;
 				}
@@ -88,6 +92,7 @@ void search(char start, char end)
 		}
 	}
 
+	/*输出*/
 	for(i=m-1; i>=0; i--)
 	{
 		printf("%c->", path[i]);
