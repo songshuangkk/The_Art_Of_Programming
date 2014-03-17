@@ -13,7 +13,7 @@ char end;
 char path[20] = {0};
 int start_flag = 0;
 int end_flag = 0;
-int use[7] = {0};
+
 int path_num = 0;
 
 Node grap[7] = {{'A',{0,2,6,8,1000,1000,1000}},{'B',{2,0,3,1000,1000,1000,1000}},
@@ -22,9 +22,11 @@ Node grap[7] = {{'A',{0,2,6,8,1000,1000,1000}},{'B',{2,0,3,1000,1000,1000,1000}}
 
 void search(char start, char end)
 {
-	int i,j;
+	int i,j,t;
 	int n = 1;
 	int flag = 0;
+	int use[7] = {0};
+
 	for(i=0; i<7; i++)
 	{
 		if(grap[i].name == start)
@@ -51,19 +53,26 @@ void search(char start, char end)
 		}
 		use[flag] = 1;
 		n++;
+		t = flag;
 		/*Update the length*/
 		for(j=0; j<7;j++)
 		{
 			if(grap[flag].length[j]+tempmin<grap[start_flag].length[j]&&use[j]==0&&grap[flag].length[j]!=MAX)
 			{
 				grap[start_flag].length[j] = grap[flag].length[j]+tempmin;
+				t = j;
 			}
 		}
+
 		if(flag == end_flag)
+		{
+			printf("path:%d\n", grap[start_flag].length[end_flag]);
 			break;
+		}
 	}
 	
-	
+
+
 }
 
 int
