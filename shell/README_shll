@@ -1,0 +1,30 @@
+比较:
+相等：-eq
+不等于:-ne
+小于：-lt
+大于：-gt
+大于或等于：-ge
+小于或等于：-le
+按照下面的方法结合多个条件进行测试：
+[ ${var1} -ne 0 -a ${var2} -gt 2 ]使用了逻辑与-a
+[ ${var1} -ne 0 -a ${var2} -gt 2 ]使用逻辑或-o
+
+对于文件之类的操作：
+[ -e ${var} ]:文件存在返回真
+[ -d ${var} ]:var是一个路径的时候返回真
+[ -w ${var} ]:如果变量文件可写，返回真
+[ -r ${var} ]:如果变量文件可读，返回真
+[ -L ${var} ]:如果变量文件是链接文件，返回真
+
+test可以替换我们的括号,如：
+condition=1
+if [ condition -eq 1];
+then
+....
+fi
+使用test:
+condition=1
+if test ${condition} -eq 1;
+then
+....
+fi
