@@ -28,3 +28,16 @@ if test ${condition} -eq 1;
 then
 ....
 fi
+
+
+
+
+
+script命令的使用:
+script -t 2> timing.log -a output.session
+
+其中的timing.log这个文件中保存的是我们每个命令执行的时序时间，output.session文件中保存的是我们命令
+执行后的输出结果等。-t选项用于将时序导入到stderr。2>则用于将stderr重定向到timing.log。
+
+使用结束后，我们可以使用exit退出录屏，然后可以使用scriptrepaly命令进行播放：
+scriptreplay timing.log output.session
