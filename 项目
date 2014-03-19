@@ -55,3 +55,5 @@ team2=user3,user2,user1
 [repo1:/baz/fuz]
 * = r
 @team1 = rw
+
+密码保存在本地文件：htpasswd
