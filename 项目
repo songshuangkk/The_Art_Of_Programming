@@ -1,0 +1,57 @@
+【系统描述】
+SVN是一个比较流行的集中式版本管理系统。SVN创建的代码库可以通过多种方式向外公开，其中比较常用的是通过Apache在HTTP协议上进行代码库的公开。
+
+代码库公开就面临用户和权限的管理。Windows用户可以通过VisualSVN比较方便地进行代码库和用户的管理。但Linux用户只能通过手动命令来管理。
+
+【需求】
+通过Apache的CGI程序实现以下功能。
+☆管理员
+1.	可以通过网页调用CGI程序增加用户，设置用户初始密码。
+2.	设置用户可以访问的代码库以及读写权限。
+
+☆	开发人员
+1.	可以修改自己的密码
+2.	修改自己的信息（姓名，邮箱等）
+
+【技术点】
+CGI，Apache，SVN，文件处理
+HTML，JavaScript
+
+【应用】
+http://dev.letmepark.cn/svn
+
+
+
+
+用户管理文件：
+### This file is an example authorization file for svnserve.
+### Its format is identical to that of mod_authz_svn authorization
+### files.
+### As shown below each section defines authorizations for the path and
+### (optional) repository specified by the section name.
+### The authorizations follow. An authorization line can refer to:
+###  - a single user,
+###  - a group of users defined in a special [groups] section,
+###  - an alias defined in a special [aliases] section,
+###  - all authenticated users, using the '$authenticated' token,
+###  - only anonymous users, using the '$anonymous' token,
+###  - anyone, using the '*' wildcard.
+###
+### A match can be inverted by prefixing the rule with '~'. Rules can
+### grant read ('r') access, read-write ('rw') access, or no access
+### ('').
+
+[groups]
+# harry_and_sally = harry,sally
+# harry_sally_and_joe = harry,sally,&joe
+admin=user1
+team1=user2,user3
+team2=user3,user2,user1
+
+[/]
+*=
+@admin=rw
+
+[repo1:/baz/fuz]
+* = r
+@team1 = rw
