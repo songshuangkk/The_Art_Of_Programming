@@ -12,7 +12,6 @@ name = f_name.readline()
 passwd = f_name.readline()
 
 name = name[:-1]
-passwd = passwd[:-1]
 
 """Create the user password"""
 cmd = "htpasswd -D d:\Apache\conf\users "
