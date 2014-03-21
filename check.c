@@ -62,7 +62,7 @@ void check_ident(char user[3][100])
     len = strlen(user[1]);
     fwrite(user[1], len, 1, fp);
     fwrite(&c, 1, 1, fp);
-    len = strlen(user[1]);
+    len = strlen(user[2]);
     fwrite(user[2], len, 1, fp);
     printf("<center><h1>Open Successfull!</h1></center>\n");
     fclose(fp);
