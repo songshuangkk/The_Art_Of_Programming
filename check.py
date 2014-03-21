@@ -14,7 +14,6 @@ new_passwd = f_name.readline()
 
 name = name[:-1]
 passwd = passwd[:-1]
-new_passwd = new_passwd[:-1]
 
 """Modfiy the user password"""
 if new_passwd != None:
